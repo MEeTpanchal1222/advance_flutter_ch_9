@@ -17,7 +17,7 @@ class PostsApiHomePage extends StatelessWidget {
         shadowColor: Colors.black,
         title: const Text('Post\'s data Form API'),
       ),
-      body: ListView(
+      body:(Provider.of<PostApiProvider>(context).dataentry)? ListView(
         children: [
           ListTile(
             title: Column(
@@ -49,19 +49,7 @@ class PostsApiHomePage extends StatelessWidget {
               ),
 
               // body, tags
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    overflow: TextOverflow.ellipsis,
-                    providerT.posts.postList[index].body,
-                  ),
-                  Text(
-                    overflow: TextOverflow.ellipsis,
-                    '# ${providerT.posts.postList[index].tags.join(', ')}',
-                  ),
-                ],
-              ),
+
 
               // reactions, view
               trailing: Column(
@@ -84,7 +72,7 @@ class PostsApiHomePage extends StatelessWidget {
             ),
           ),
         ],
-      ),
+      ):Center(child: CircularProgressIndicator())
     );
   }
 }

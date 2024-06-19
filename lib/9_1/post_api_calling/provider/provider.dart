@@ -1,14 +1,12 @@
 
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
-
-
+import '../api/api_calling.dart';
 import '../modal/modal.dart';
 
 
 class PostApiProvider extends ChangeNotifier{
-
+  bool dataentry = false;
   late PostModel _posts;
 
   PostModel get posts => _posts;
@@ -23,5 +21,6 @@ class PostApiProvider extends ChangeNotifier{
 
     // convert into object data
     _posts = PostModel.fromJson(data);
+    bool dataentry = true;
   }
 }
